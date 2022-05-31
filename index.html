@@ -15,29 +15,40 @@
   <link rel="stylesheet" href="src/style.css" />
   <body>
     <div class="container">
-      <div class="weather-app">
-        <h1>Calgary</h1>
-        <h2>
-          <ul>
-            <li>Tue, 10:52</li>
-            <li>Partly Cloudy</li>
-          </ul>
-        </h2>
-        <div class="row">
-          <div class="col-md-6">
-            <img
-              src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
-              alt="weather-icon"
-              class="weather-icon"
-            />
-            12˚C |˚F
+      <div class="weather-app-wrapper">
+        <div class="weather-app">
+          <div class="overview">
+            <h1>Calgary, AB</h1>
+            <h2>
+              <ul>
+                <li>Tuesday, 2:00 p.m.</li>
+                <li>Partly Cloudy</li>
+              </ul>
+            </h2>
           </div>
-          <div class="col-md-6">
-            <ul>
-              <li>Precipitation: 0%</li>
-              <li>Humidty:73%</li>
-              <li>Wind: 2km/hr</li>
-            </ul>
+          <div class="row">
+            <div class="col-6">
+              <div class="clearfix weather-temperature">
+                <img
+                  src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+                  alt="weather-icon"
+                  class="float-left"
+                />
+                <span class="float-left">
+                  <strong>12</strong>
+                  <span class="units"
+                    >˚C | <a href="#" id="#farhenheit">˚F</a></span
+                  >
+                </span>
+              </div>
+            </div>
+            <div class="col-6">
+              <ul>
+                <li>Precipitation: 0%</li>
+                <li>Humidty:73%</li>
+                <li>Wind: 2km/hr</li>
+              </ul>
+            </div>
           </div>
         </div>
         <small>
