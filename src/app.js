@@ -1,5 +1,4 @@
 function formatDate(timestamp) {
-  console.log(timestamp);
   let date = new Date(timestamp);
   let hours = date.getHours();
   if (hours < 10) {
@@ -44,6 +43,5 @@ function displayTemperature(response) {
 
 let apiKey = "abc1ee724ce94bd135a062b94b61de5a";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Calgary&appid=${apiKey}&units=metric`;
-console.log(apiUrl);
 
 axios.get(apiUrl).then(displayTemperature);
