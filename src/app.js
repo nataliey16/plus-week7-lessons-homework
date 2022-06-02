@@ -49,8 +49,17 @@ function displayTemperature(response) {
   );
 }
 
-let apiKey = "abc1ee724ce94bd135a062b94b61de5a";
-let city = "Calgary";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+function search(city) {
+  let apiKey = "abc1ee724ce94bd135a062b94b61de5a";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayTemperature);
+}
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#city-input");
+  search(cityInputElement.value);
+}
 
-axios.get(apiUrl).then(displayTemperature);
+search("Singapore");
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
