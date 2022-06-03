@@ -60,6 +60,11 @@ function handleSubmit(event) {
   search(cityInputElement.value);
 }
 
-search("Singapore");
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
+
+function displayFarenheitTemperature(event) {
+  event.preventDefault();
+}
+let farhenheitLink = document.querySelector("#farhenheit-link");
+farhenheitLink.addEventListener("click", displayFarenheitTemperature);
