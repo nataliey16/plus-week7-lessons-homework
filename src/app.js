@@ -36,6 +36,8 @@ function displayTemperature(response) {
   let wind = Math.round(response.data.wind.speed);
   windElement.innerHTML = `Wind: ${wind} km/hr`;
 
+  celciusTemperature = response.data.main.temp;
+
   let dateElement = document.querySelector("#date");
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
   let weatherIconElement = document.querySelector("#weather-icon");
@@ -60,11 +62,35 @@ function handleSubmit(event) {
   search(cityInputElement.value);
 }
 
+function displayFarenheitTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#shown-temperature");
+  // add the active farhenheit link to make it inactive
+  // remove the inactive celcius link to make it active
+  celciusLink.classList.remove("active");
+  farhenheitLink.classList.add("active");
+  let farhenheitTemperature = (celciusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(`${farhenheitTemperature}`);
+  // alert(farhenheitTemperature);
+}
+
+function displayCelsiusTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#shown-temperature");
+  celciusLink.classList.add("active");
+  farhenheitLink.classList.remove("active");
+  temperatureElement.innerHTML = Math.round(celciusTemperature);
+  // alert(farhenheitTemperature);
+}
+let celciusTemperature = null;
+
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
 
-function displayFarenheitTemperature(event) {
-  event.preventDefault();
-}
 let farhenheitLink = document.querySelector("#farhenheit-link");
 farhenheitLink.addEventListener("click", displayFarenheitTemperature);
+
+let celciusLink = document.querySelector("#celcius-link");
+celciusLink.addEventListener("click", displayCelsiusTemperature);
+
+search("Calgary");
