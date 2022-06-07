@@ -22,6 +22,37 @@ function formatDate(timestamp) {
   return `${day}, ${hours}:${minutes}`;
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#weather-forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+             <div class="col-2">
+              <div class="weather-forecast-date">${day}</div>
+              <div>
+                <img
+                  src="https://ssl.gstatic.com/onebox/weather/48/rain_light.png"
+                  alt="forecast-icon"
+                  class="weather-forecast-icon"
+                  width="36"
+                />
+              </div>
+              <div class="weather-forecast-temperature">
+                <span class="weather-forecast-temperature-max">18˚</span>
+                <span class="weather-forecast-temperature-min">12˚</span>
+              </div>
+            </div>
+  `;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+  console.log(forecastHTML);
+}
+
 function displayTemperature(response) {
   let cityElement = document.querySelector("#shown-city");
   cityElement.innerHTML = response.data.name;
@@ -94,3 +125,4 @@ let celciusLink = document.querySelector("#celcius-link");
 celciusLink.addEventListener("click", displayCelsiusTemperature);
 
 search("Calgary");
+displayForecast();
